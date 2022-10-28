@@ -15,5 +15,6 @@ docker run --rm -p 8888:8888 jupyter
 You can mount any folder by using -v argument. NOTE! Your destination path has to start with /mipt.
 
 Here is example of mounting folder "test"
-
+```
 docker run --rm -p 8888:8888 -v /PATH/TO/test:/mipt/test jupyter
+```
