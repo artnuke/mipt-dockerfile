@@ -1,0 +1,10 @@
+notebook
+sklearn
+pandas
+numpy
+seaborn
+scipy
+somepytools
+mne
+h5py
+torch
