@@ -1,11 +1,14 @@
-ARG BASE_CONTAINER=python
-ARG PYTHON_VERSION=latest
+ARG BASE_CONTAINER=ubuntu
+ARG UBUNTU_VERSION=latest
 
 ARG POETRY_VERSION=1.2.2
 
-FROM $BASE_CONTAINER:$PYTHON_VERSION
+FROM $BASE_CONTAINER:$UBUNTU_VERSION
 
 WORKDIR /mipt
+
+#Install pckgs
+RUN apt-get update -y && apt-get install wget curl -y
 
 # install conda
 RUN wget -O /tmp/Miniconda3.sh https://repo.anaconda.com/miniconda/Miniconda3-py38_4.9.2-Linux-x86_64.sh\
@@ -16,7 +19,7 @@ RUN pip install ruamel-yaml
 
 #Install requirements
 COPY ./requirements.txt ./requirements.txt
-RUN python -m venv ./venv && . venv/bin/activate
+RUN python3 -m venv ./venv && . venv/bin/activate
 RUN pip install -r ./requirements.txt
 
 # Install poetry
